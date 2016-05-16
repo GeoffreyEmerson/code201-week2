@@ -3,3 +3,4 @@
 // Stores correctly renders using lists in the "data" page.
 
 // Hillsboro, Pearl, DowntownPDX, Buckman, PDXairport, and Clackamas
+var store = [];
