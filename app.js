@@ -1,6 +1,12 @@
-// Good use of object literals, one object per store model, with properties and methods correctly initialized
-// Main page meets requirements of problem domain.
-// Stores correctly renders using lists in the "data" page.
+var store_names = ['Hillsboro', 'Pearl', 'DowntownPDX', 'Buckman', 'PDXairport', 'Clackamas'];
+var stores = [];
 
-// Hillsboro, Pearl, DowntownPDX, Buckman, PDXairport, and Clackamas
-var store = [];
+// Store constructor
+var Store = function(name_input) {
+  this.name = name_input;
+};
+
+// Initialize store object array
+for (var i = 0; i < store_names.length; i++) {
+  stores.push(new Store(store_names[i]));
+}

@@ -4,8 +4,8 @@ var numCorrect = 0;
 var locations = ['Hillsboro', 'Pearl', 'DowntownPDX', 'Buckman', 'PDXairport', 'Clackamas'];
 
 // Test object array creation
-if (typeof store != 'undefined') {
-  if (typeof store === 'object') {
+if (typeof stores != 'undefined') {
+  if (typeof stores === 'object') {
     console.log('Pizza store variable creation test: Pass!');
     numCorrect++;
   } else {
@@ -20,8 +20,8 @@ console.log('You got ' + numCorrect + ' out of ' + numTests);
 
 // Test names of each store
 for (var i = 0; i < locations.length; i++) {
-  if (typeof store[i] != 'undefined') {
-    if (store[i].name === locations[i]) {
+  if (typeof stores[i] != 'undefined') {
+    if (stores[i].name === locations[i]) {
       console.log(locations[i] + ': Pass!');
       numCorrect++;
     } else {
