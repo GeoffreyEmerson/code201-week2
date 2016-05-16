@@ -18,22 +18,22 @@ if (typeof store != 'undefined') {
 numTests++;
 console.log('You got ' + numCorrect + ' out of ' + numTests);
 
-// // Test names of each store
-// for (var i = 0; i < locations.length; i++) {
-//   if (typeof store[i] != 'undefined') {
-//     if (store[i].name === locations[i]) {
-//       console.log(locations[i] + ': Pass!');
-//       numCorrect++;
-//     } else {
-//       console.log(locations[i] + ': --- FAIL ---');
-//     }
-//   } else {
-//     console.log(locations[i] + ': --- FAIL ---');
-//   }
-//   numTests++;
-// }
-//
-// console.log('You got ' + numCorrect + ' out of ' + numTests);
+// Test names of each store
+for (var i = 0; i < locations.length; i++) {
+  if (typeof store[i] != 'undefined') {
+    if (store[i].name === locations[i]) {
+      console.log(locations[i] + ': Pass!');
+      numCorrect++;
+    } else {
+      console.log(locations[i] + ': --- FAIL ---');
+    }
+  } else {
+    console.log(locations[i] + ': --- FAIL ---');
+  }
+  numTests++;
+}
+
+console.log('You got ' + numCorrect + ' out of ' + numTests);
 
 // if (typeof sum != 'undefined') {
 //   var y = sum(-10, 10);
