@@ -1,5 +1,7 @@
 var store_names = ['Hillsboro', 'Pearl', 'DowntownPDX', 'Buckman', 'PDXairport', 'Clackamas'];
 var stores = [];
+var opening = 8;
+var hours_open = 18;
 
 // Store constructor
 var Store = function(name_input) {
@@ -31,11 +33,54 @@ var Store = function(name_input) {
     var deliveries_over_min = Math.floor(Math.random() * delivery_range_this_hour);
     var deliveries_this_hour = projected[range_set][2] + deliveries_over_min;
 
-    return [pizzas_this_hour, deliveries_this_hour];
+    // Recommended number of delivery drivers
+    var recommended_drivers = Math.ceil(deliveries_this_hour / 3);
+    return {
+      pizzas: pizzas_this_hour,
+      deliveries: deliveries_this_hour,
+      drivers: recommended_drivers
+    };
   };
 };
+
+var output_div = document.getElementById('stores_div');
 
 // Initialize store object array
 for (var i = 0; i < store_names.length; i++) {
   stores.push(new Store(store_names[i]));
+
+  var store_header = document.createElement('h2').appendChild(document.createTextNode(stores[i].name));
+  output_div.appendChild(store_header);
+
+  var table_el = document.createElement('table');
+  var header_row = document.createElement('thead');
+  var table_row = document.createElement('tr');
+  var headers = ['Hour', 'Total', 'Deliveries', 'Recommended Drivers'];
+  for (var j = 0; j < headers.length; j++) {
+    var th_col = document.createElement('th');
+    th_col.appendChild(document.createTextNode(headers[j]));
+    table_row.appendChild(th_col);
+  }
+  header_row.appendChild(table_row);
+  table_el.appendChild(header_row);
+
+  // build tbody
+  var tbody = document.createElement('tbody');
+  for (var hour = 0; hour < hours_open; hour++) {
+    var random_obj = stores[i].generate_random_pizzas(hour);
+    var date = new Date();
+    date.setHours(opening + hour);
+    var table_row = document.createElement('tr');
+    var cells = [date.getHours(), random_obj.pizzas, random_obj.deliveries, random_obj.drivers];
+    for (var j = 0; j < cells.length; j++) {
+      var th_col = document.createElement('th');
+      th_col.appendChild(document.createTextNode(cells[j]));
+      table_row.appendChild(th_col);
+    }
+    tbody.appendChild(table_row);
+  }
+
+  table_el.appendChild(tbody);
+
+  output_div.appendChild(table_el);
 }
