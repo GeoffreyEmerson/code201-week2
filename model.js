@@ -2,7 +2,7 @@
 var Store = function(name_input, open_time, hours_per_day, daily_projections) {
   this.name = name_input;
 
-  // Format for estimates:
+  // Format for estimate literals:
   // {
   //   time: format_time(date),
   //   pizzas: pizzas_this_hour,

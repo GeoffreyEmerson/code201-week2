@@ -54,7 +54,6 @@ var projections =
     ]
   ];
 
-
 // Check for sales-data page
 var output_div = document.getElementById('stores_div');
 if (output_div) {
