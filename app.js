@@ -49,7 +49,8 @@ var output_div = document.getElementById('stores_div');
 for (var i = 0; i < store_names.length; i++) {
   stores.push(new Store(store_names[i]));
 
-  var store_header = document.createElement('h2').appendChild(document.createTextNode(stores[i].name));
+  var store_header = document.createElement('h2');
+  store_header.appendChild(document.createTextNode(stores[i].name));
   output_div.appendChild(store_header);
 
   var table_el = document.createElement('table');
