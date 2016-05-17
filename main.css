@@ -7,6 +7,7 @@ table
   /*border-collapse: collapse;*/
   border-spacing: 0px;
   margin: 1em;
+  background-color: #555;
 }
 
 h1 {
@@ -20,4 +21,14 @@ body {
   background-attachment: fixed;
   color: white;
   text-shadow: 0 0 3px #FF0000;
+}
+
+h2 {
+  font-size: 60px;
+  background-color: #333;
+}
+
+#store_hours, #store_locations {
+  font-size: 20px;
+  background-color: #333;
 }
