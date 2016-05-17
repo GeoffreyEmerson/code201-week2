@@ -80,4 +80,5 @@ if (output_span) {
     } while (day < 7);
   }
   display_weekly_total(weekly_total, output_span);
+  scroll_billboard();
 }
