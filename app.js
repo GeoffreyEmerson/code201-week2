@@ -36,5 +36,5 @@ if (output_span) {
       stores[i].populate_estimates();
     } while (day < 7);
   }
-  output_span.innerText = weekly_total;
+  display_weekly_total(weekly_total, output_span);
 }
