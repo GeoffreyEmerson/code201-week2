@@ -55,7 +55,7 @@ for (var i = 0; i < store_names.length; i++) {
   var table_el = document.createElement('table');
   var header_row = document.createElement('thead');
   var table_row = document.createElement('tr');
-  var headers = ['Hour', 'Total', 'Deliveries', 'Recommended Drivers'];
+  var headers = ['Hour', 'Total Pizzas Made', 'Deliveries Made', 'Recommended Drivers'];
   for (var j = 0; j < headers.length; j++) {
     var th_col = document.createElement('th');
     th_col.appendChild(document.createTextNode(headers[j]));
@@ -68,10 +68,10 @@ for (var i = 0; i < store_names.length; i++) {
   var tbody = document.createElement('tbody');
   for (var hour = 0; hour < hours_open; hour++) {
     var random_obj = stores[i].generate_random_pizzas(hour);
-    var date = new Date();
-    date.setHours(opening + hour);
+    var time = new Date();
+    time.setHours(opening + hour);
     var table_row = document.createElement('tr');
-    var cells = [date.getHours(), random_obj.pizzas, random_obj.deliveries, random_obj.drivers];
+    var cells = [format_time(time), random_obj.pizzas, random_obj.deliveries, random_obj.drivers];
     for (var j = 0; j < cells.length; j++) {
       var th_col = document.createElement('th');
       th_col.appendChild(document.createTextNode(cells[j]));
@@ -83,4 +83,17 @@ for (var i = 0; i < store_names.length; i++) {
   table_el.appendChild(tbody);
 
   output_div.appendChild(table_el);
+}
+
+function format_time(time) {
+  if (time.getHours() < 12) {
+    var period = 'AM';
+  } else {
+    var period = 'PM';
+  }
+  var hour = time.getHours() % 12;
+  if (hour == 0) {
+    hour = 12;
+  }
+  return hour + ':00 ' + period;
 }
