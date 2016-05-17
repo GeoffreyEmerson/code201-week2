@@ -4,7 +4,7 @@ function display_tables(store_array, output_div) {
     var current_store = store_array[i];
 
     // build h2 with store name
-    var store_header = document.createElement('h2');
+    var store_header = document.createElement('h3');
     store_header.appendChild(document.createTextNode(current_store.name));
 
     //start building table with header row
