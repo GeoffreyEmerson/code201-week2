@@ -7,9 +7,7 @@ function display_tables(store_array, output_div) {
     var store_header = document.createElement('h2');
     store_header.appendChild(document.createTextNode(current_store.name));
 
-    //start table with header row
-    var table = document.createElement('table');
-    var header_row = document.createElement('thead');
+    //start building table with header row
     var table_row = document.createElement('tr');
     var headers = ['Hour', 'Total Pizzas Made', 'Deliveries Made', 'Recommended Drivers'];
     for (var j = 0; j < headers.length; j++) {
@@ -17,8 +15,10 @@ function display_tables(store_array, output_div) {
       th_col.appendChild(document.createTextNode(headers[j]));
       table_row.appendChild(th_col);
     }
+
+    // build and assemble the table header
+    var header_row = document.createElement('thead');
     header_row.appendChild(table_row);
-    table.appendChild(header_row);
 
     // now build tbody
     var tbody = document.createElement('tbody');
@@ -36,8 +36,25 @@ function display_tables(store_array, output_div) {
       tbody.appendChild(table_row);
     }
 
-    // done with tbody; that completes this table
+    // and lastly build the table footer
+    var tfoot = document.createElement('tfoot');
+    var table_row = document.createElement('tr');
+    var th_col = document.createElement('td');
+    th_col.appendChild(document.createTextNode('Totals'));
+    table_row.appendChild(th_col);
+    th_col = document.createElement('td');
+    th_col.appendChild(document.createTextNode(current_store.daily_total_pizzas));
+    table_row.appendChild(th_col);
+    th_col = document.createElement('td');
+    th_col.appendChild(document.createTextNode(current_store.daily_total_deliveries));
+    table_row.appendChild(th_col);
+    tfoot.appendChild(table_row);
+
+    // create and assemble the table element
+    var table = document.createElement('table');
+    table.appendChild(header_row);
     table.appendChild(tbody);
+    table.appendChild(tfoot);
 
     // output the table and store name within a div per store
     var store_div = document.createElement('div');

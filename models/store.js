@@ -11,6 +11,8 @@ var Store = function(name_input, open_time, hours_per_day, daily_projections) {
   // };
 
   this.estimates = [];
+  this.daily_total_pizzas = 0;
+  this.daily_total_deliveries = 0;
 
   this.populate_estimates = function() {
     for (var hour = 0; hour < hours_per_day; hour++) {
@@ -24,6 +26,7 @@ var Store = function(name_input, open_time, hours_per_day, daily_projections) {
     var range_this_hour = daily_projections[range_set][1] - daily_projections[range_set][0];
     var pizzas_over_min = Math.floor(Math.random() * range_this_hour);
     var pizzas_this_hour = daily_projections[range_set][0] + pizzas_over_min;
+    this.daily_total_pizzas += pizzas_this_hour;
 
     // Deliveries possible depends on the hour and the total pizzas for that hour
     var max_deliveries_this_hour;
@@ -35,6 +38,7 @@ var Store = function(name_input, open_time, hours_per_day, daily_projections) {
     var delivery_range_this_hour = max_deliveries_this_hour - daily_projections[range_set][2];
     var deliveries_over_min = Math.floor(Math.random() * delivery_range_this_hour);
     var deliveries_this_hour = daily_projections[range_set][2] + deliveries_over_min;
+    this.daily_total_deliveries += deliveries_this_hour;
 
     // Recommended number of delivery drivers
     var recommended_drivers = Math.ceil(deliveries_this_hour / 3);
