@@ -8,3 +8,16 @@ table
   border-spacing: 0px;
   margin: 1em;
 }
+
+h1 {
+  font-size: 140px;
+  font-family: Audiowide, fantasy;
+  text-shadow: 0 0 5px #FF0000;
+}
+
+body {
+  background-image: url(futuristic-city-wallpaper-7.jpg);
+  background-attachment: fixed;
+  color: white;
+  text-shadow: 0 0 3px #FF0000;
+}
