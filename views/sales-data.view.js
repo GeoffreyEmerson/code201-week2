@@ -29,7 +29,7 @@ function display_tables(store_array, output_div) {
                    current_store.estimates[j].deliveries,
                    current_store.estimates[j].drivers];
       for (var k = 0; k < cells.length; k++) {
-        var th_col = document.createElement('th');
+        var th_col = document.createElement('td');
         th_col.appendChild(document.createTextNode(cells[k]));
         table_row.appendChild(th_col);
       }
