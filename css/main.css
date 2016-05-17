@@ -1,5 +1,5 @@
 table, th, td {
-   border: 1px solid black;
+   border: 1px solid #444;
 }
 
 table {
@@ -8,14 +8,23 @@ table {
   background-color: #555;
 }
 
+th {
+  background-color: #000;
+}
+
+th, td {
+  padding: 5px;
+}
+
 h1 {
   font-size: 140px;
   font-family: Audiowide, fantasy;
   text-shadow: 0 0 5px #FF0000;
+  text-align: center;
 }
 
 body {
-  background-image: url('img/futuristic-city-wallpaper-7.jpg');
+  background-image: url('/img/futuristic-city-wallpaper-7.jpg');
   background-attachment: fixed;
   color: white;
   text-shadow: 0 0 3px #FF0000;
@@ -23,10 +32,24 @@ body {
 
 h2 {
   font-size: 60px;
-  background-color: #333;
+  margin: 0;
 }
 
 #store_hours, #store_locations {
   font-size: 20px;
   background-color: #333;
+}
+
+#stores_div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.individual_store {
+  background-color: #333;
+  padding: 15px;
+  margin: 25px;
+  width: 550px;
 }

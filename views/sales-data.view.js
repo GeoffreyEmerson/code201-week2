@@ -6,7 +6,6 @@ function display_tables(store_array, output_div) {
     // build h2 with store name
     var store_header = document.createElement('h2');
     store_header.appendChild(document.createTextNode(current_store.name));
-    output_div.appendChild(store_header);
 
     //start table with header row
     var table = document.createElement('table');
@@ -40,7 +39,11 @@ function display_tables(store_array, output_div) {
     // done with tbody; that completes this table
     table.appendChild(tbody);
 
-    // output the table as a sibling to the h2
-    output_div.appendChild(table);
+    // output the table and store name within a div per store
+    var store_div = document.createElement('div');
+    store_div.setAttribute('class', 'individual_store');
+    store_div.appendChild(store_header);
+    store_div.appendChild(table);
+    output_div.appendChild(store_div);
   }
 }
