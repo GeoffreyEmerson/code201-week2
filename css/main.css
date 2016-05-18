@@ -1,0 +1,110 @@
+table, th, td {
+   border: 1px solid #444;
+}
+
+table {
+  border-spacing: 0px;
+  margin: 1em auto;
+  background-color: #555;
+}
+
+th {
+  background-color: #000;
+}
+
+tfoot td {
+  background-color: #222;
+  font-size: 20px;
+}
+
+th, td {
+  padding: 5px;
+  text-align: center;
+}
+
+tr:hover td {
+  background-color: #888;
+}
+
+h1 {
+  font-size: 140px;
+  font-family: Audiowide, fantasy;
+  text-shadow: 5px 5px 5px #FF0000;
+  text-align: center;
+  margin: 30px auto;
+}
+
+body {
+  background-color: #000;
+  background-image: url('/img/pizza.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-shadow: 0 0 3px #FF0000;
+  margin: 0;
+}
+
+h2 {
+  font-size: 50px;
+  margin: 0;
+  font-family: Codystar, cursive;
+}
+
+h2.groovy {
+  border-width: 30px;
+  border-image: url("/img/groovy.png") 50 50 repeat;
+  border-style: solid;
+  text-align: center;
+  background-color: #444;
+  background-position: center;
+  background-clip: content-box;
+  width: 75%;
+  margin: 0 auto;
+}
+
+h3 {
+  font-family: 'Geostar Fill', cursive;
+  font-size: 50px;
+  margin: 0;
+}
+
+.flex {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.column {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  background-color: #333;
+  width: 25%;
+  font-family: Megrim, cursive;
+  border: solid #ff0000;
+  border-width: medium;
+}
+
+#stores_div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.individual_store, .totals, .add_store_div {
+  background-color: #333;
+  padding: 15px;
+  margin: 25px;
+  width: 550px;
+}
+
+footer {
+  margin: 30px 0 0 0;
+  padding: 20px;
+  text-align: center;
+  background-color: #000;
+}

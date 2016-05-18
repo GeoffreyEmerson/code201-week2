@@ -1,0 +1,201 @@
+var output_div = document.getElementById('stores_div');
+
+// Build tables
+function display_tables(store_array) {
+  output_div.innerHTML = '';
+  for (var i = 0; i < store_array.length; i++) {
+    var current_store = store_array[i];
+
+    // build h2 with store name
+    var store_header = document.createElement('h3');
+    store_header.appendChild(document.createTextNode(current_store.name));
+
+    //start building table with header row
+    var table_row = document.createElement('tr');
+    var headers = ['Hour', 'Total Pizzas Made', 'Deliveries Made', 'Recommended Drivers'];
+    for (var j = 0; j < headers.length; j++) {
+      var th_col = document.createElement('th');
+      th_col.appendChild(document.createTextNode(headers[j]));
+      table_row.appendChild(th_col);
+    }
+
+    // build and assemble the table header
+    var header_row = document.createElement('thead');
+    header_row.appendChild(table_row);
+
+    // now build tbody
+    var tbody = document.createElement('tbody');
+    for (var j = 0; j < current_store.estimates.length; j++) {
+      var table_row = document.createElement('tr');
+      var cells = [current_store.estimates[j].time,
+                   current_store.estimates[j].pizzas,
+                   current_store.estimates[j].deliveries,
+                   current_store.estimates[j].drivers];
+      for (var k = 0; k < cells.length; k++) {
+        var th_col = document.createElement('td');
+        th_col.appendChild(document.createTextNode(cells[k]));
+        table_row.appendChild(th_col);
+      }
+      tbody.appendChild(table_row);
+    }
+
+    // and lastly build the table footer
+    var tfoot = document.createElement('tfoot');
+    var table_row = document.createElement('tr');
+    var th_col = document.createElement('td');
+    th_col.appendChild(document.createTextNode('Totals'));
+    table_row.appendChild(th_col);
+    th_col = document.createElement('td');
+    th_col.appendChild(document.createTextNode(current_store.daily_total_pizzas));
+    table_row.appendChild(th_col);
+    th_col = document.createElement('td');
+    th_col.appendChild(document.createTextNode(current_store.daily_total_deliveries));
+    table_row.appendChild(th_col);
+    tfoot.appendChild(table_row);
+
+    // create and assemble the table element
+    var table = document.createElement('table');
+    table.appendChild(header_row);
+    table.appendChild(tbody);
+    table.appendChild(tfoot);
+
+    // output the table and store name within a div per store
+    var store_div = document.createElement('div');
+    store_div.setAttribute('class', 'individual_store');
+    store_div.appendChild(store_header);
+    store_div.appendChild(table);
+    output_div.appendChild(store_div);
+  }
+}
+
+function display_hourly_totals(hourly_totals) {
+  // build h2 for totals heading
+  var store_header = document.createElement('h3');
+  store_header.appendChild(document.createTextNode('Totals by Hour'));
+
+  //start building table with header row
+  var table_row = document.createElement('tr');
+  var headers = ['Hour', 'Total Pizzas Made', 'Deliveries Made'];
+  for (var j = 0; j < headers.length; j++) {
+    var th_col = document.createElement('th');
+    th_col.appendChild(document.createTextNode(headers[j]));
+    table_row.appendChild(th_col);
+  }
+
+  // build and assemble the table header
+  var header_row = document.createElement('thead');
+  header_row.appendChild(table_row);
+
+  // now build tbody
+  var tbody = document.createElement('tbody');
+  var pizza_totals = 0;
+  var delivery_totals = 0;
+  for (var key in hourly_totals) {
+    var table_row = document.createElement('tr');
+    pizza_totals += hourly_totals[key][0];
+    delivery_totals += hourly_totals[key][1];
+    var cells = [key,
+                 hourly_totals[key][0],
+                 hourly_totals[key][1]];
+    for (var k = 0; k < cells.length; k++) {
+      var th_col = document.createElement('td');
+      th_col.appendChild(document.createTextNode(cells[k]));
+      table_row.appendChild(th_col);
+    }
+    tbody.appendChild(table_row);
+  }
+
+  // and lastly build the table footer
+  var tfoot = document.createElement('tfoot');
+  var table_row = document.createElement('tr');
+  var th_col = document.createElement('td');
+  th_col.appendChild(document.createTextNode('Totals'));
+  table_row.appendChild(th_col);
+  th_col = document.createElement('td');
+  th_col.appendChild(document.createTextNode(pizza_totals));
+  table_row.appendChild(th_col);
+  th_col = document.createElement('td');
+  th_col.appendChild(document.createTextNode(delivery_totals));
+  table_row.appendChild(th_col);
+  tfoot.appendChild(table_row);
+
+  // create and assemble the table element
+  var table = document.createElement('table');
+  table.appendChild(header_row);
+  table.appendChild(tbody);
+  table.appendChild(tfoot);
+
+  // output the table and store name within a div per store
+  var store_div = document.createElement('div');
+  store_div.setAttribute('class', 'totals');
+  store_div.appendChild(store_header);
+  store_div.appendChild(table);
+  output_div.appendChild(store_div);
+}
+
+function render_add_store_form() {
+  // create heading
+  var add_store_heading = document.createElement('h3');
+  add_store_heading.appendChild(document.createTextNode('Add New Location'));
+
+  // create form
+  var add_store_form = document.createElement('form');
+  var paragraph = document.createElement('p');
+  var label = document.createElement('label');
+  label.setAttribute('for', 'store_name_field');
+  label.appendChild(document.createTextNode('Store name: '));
+  var input = document.createElement('input');
+  input.setAttribute('name', 'store_name_field');
+  input.setAttribute('id', 'store_name_field');
+  input.setAttribute('autocomplete', 'off');
+  paragraph.appendChild(label);
+  paragraph.appendChild(input);
+  add_store_form.appendChild(paragraph);
+
+  // create labels and data fields
+  paragraph = document.createElement('p');
+  label = document.createElement('label');
+  label.setAttribute('for', 'opening_time_field');
+  label.appendChild(document.createTextNode('Opening time: '));
+  input = document.createElement('input');
+  input.setAttribute('name', 'opening_time_field');
+  input.setAttribute('id', 'opening_time_field');
+  input.setAttribute('autocomplete', 'off');
+  input.setAttribute('value', '8');
+  paragraph.appendChild(label);
+  paragraph.appendChild(input);
+  add_store_form.appendChild(paragraph);
+
+  paragraph = document.createElement('p');
+  label = document.createElement('label');
+  label.setAttribute('for', 'hours_open_field');
+  label.appendChild(document.createTextNode('Hours open: '));
+  input = document.createElement('input');
+  input.setAttribute('name', 'hours_open_field');
+  input.setAttribute('id', 'hours_open_field');
+  input.setAttribute('autocomplete', 'off');
+  input.setAttribute('value', '18');
+  paragraph.appendChild(label);
+  paragraph.appendChild(input);
+  add_store_form.appendChild(paragraph);
+
+  // create the button
+  paragraph = document.createElement('p');
+  var button = document.createElement('button');
+  button.appendChild(document.createTextNode('Create Store'));
+  button.setAttribute('onclick', 'event.preventDefault();\
+    add_store(document.getElementById(\'store_name_field\').value,\
+    document.getElementById(\'opening_time_field\').value,\
+    document.getElementById(\'hours_open_field\').value,\
+    projections[0]); return false;');
+  paragraph.appendChild(button);
+  add_store_form.appendChild(paragraph);
+
+  // append form to div
+  var add_store_div = document.createElement('div');
+  add_store_div.setAttribute('class', 'add_store_div');
+  add_store_div.appendChild(add_store_heading);
+  add_store_div.appendChild(add_store_form);
+  // append div to output_div
+  output_div.appendChild(add_store_div);
+}
