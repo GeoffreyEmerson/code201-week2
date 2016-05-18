@@ -22,6 +22,10 @@ th, td {
   text-align: center;
 }
 
+td.no-wrap {
+  white-space: nowrap;
+}
+
 tr:hover td {
   background-color: #888;
 }
@@ -40,6 +44,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+  font-size: 18px;
   text-shadow: 0 0 3px #FF0000;
   margin: 0;
   cursor: url('/img/cursor.png'), auto;
@@ -121,4 +126,16 @@ footer {
   text-align: center;
   background-color: #000;
   box-shadow: 0px 500px 0px 500px #000;
+}
+
+#projections_table {
+  /*border-collapse: collapse;*/
+}
+
+#projections_table td {
+  padding: 3px;
+}
+
+#projections_table td input{
+  width: 40px;
 }

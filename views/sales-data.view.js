@@ -35,6 +35,9 @@ function display_tables(store_array) {
       for (var k = 0; k < cells.length; k++) {
         var th_col = document.createElement('td');
         th_col.appendChild(document.createTextNode(cells[k]));
+        if (k == 0) {
+          th_col.setAttribute('class', 'no-wrap');
+        }
         table_row.appendChild(th_col);
       }
       tbody.appendChild(table_row);
@@ -141,6 +144,7 @@ function render_add_store_form() {
 
   // create form
   var add_store_form = document.createElement('form');
+  var add_store_fieldset = document.createElement('fieldset');
   var paragraph = document.createElement('p');
   var label = document.createElement('label');
   label.setAttribute('for', 'store_name_field');
@@ -149,9 +153,10 @@ function render_add_store_form() {
   input.setAttribute('name', 'store_name_field');
   input.setAttribute('id', 'store_name_field');
   input.setAttribute('autocomplete', 'off');
+  input.setAttribute('value', 'testLocation');
   paragraph.appendChild(label);
   paragraph.appendChild(input);
-  add_store_form.appendChild(paragraph);
+  add_store_fieldset.appendChild(paragraph);
 
   // create labels and data fields
   paragraph = document.createElement('p');
@@ -165,7 +170,7 @@ function render_add_store_form() {
   input.setAttribute('value', '8');
   paragraph.appendChild(label);
   paragraph.appendChild(input);
-  add_store_form.appendChild(paragraph);
+  add_store_fieldset.appendChild(paragraph);
 
   paragraph = document.createElement('p');
   label = document.createElement('label');
@@ -178,19 +183,64 @@ function render_add_store_form() {
   input.setAttribute('value', '18');
   paragraph.appendChild(label);
   paragraph.appendChild(input);
-  add_store_form.appendChild(paragraph);
+  add_store_fieldset.appendChild(paragraph);
+
+  // Add projections fields and defaults to form
+
+  // create element table
+  // create element row
+  // iterate through first row of hillsboro defaults
+  var projections_table = document.createElement('table');
+  projections_table.setAttribute('id', 'projections_table');
+  //thead
+  var projections_thead = document.createElement('thead');
+  //row
+  var projections_tr = document.createElement('tr');
+  //th's
+  var projections_th;
+  var headers = ['Shift', 'Pizza Min', 'Pizza Max', 'Delivery Min', 'Delivery Max'];
+  for (var i = 0; i < headers.length; i++) {
+    projections_th = document.createElement('th');
+    projections_th.appendChild(document.createTextNode(headers[i]));
+    projections_tr.appendChild(projections_th);
+  }
+  projections_thead.appendChild(projections_tr);
+  projections_table.appendChild(projections_thead);
+
+  //tbody
+  var projections_tbody = document.createElement('tbody');
+  var projections_td;
+  var projections_input;
+  console.log(projections[0]);
+  for (var row = 0; row < projections[0].length; row++) {
+    projections_tr = document.createElement('tr');
+    projections_td = document.createElement('td');
+    projections_td.appendChild(document.createTextNode('Shift ' + row));
+    projections_tr.appendChild(projections_td);
+    for (var col = 0; col < projections[0][row].length; col++) {
+      projections_td = document.createElement('td');
+      projections_input = document.createElement('input');
+      projections_input.setAttribute('name', 'input_' + row + '_' + col);
+      projections_input.setAttribute('autocomplete', 'off');
+      projections_input.setAttribute('value', projections[0][row][col]);
+      projections_td.appendChild(projections_input);
+      projections_tr.appendChild(projections_td);
+    }
+    projections_tbody.appendChild(projections_tr);
+  }
+  projections_table.appendChild(projections_tbody);
+  add_store_fieldset.appendChild(projections_table);
 
   // create the button
   paragraph = document.createElement('p');
   var button = document.createElement('button');
   button.appendChild(document.createTextNode('Create Store'));
-  button.setAttribute('onclick', 'event.preventDefault();\
-    add_store(document.getElementById(\'store_name_field\').value,\
-    document.getElementById(\'opening_time_field\').value,\
-    document.getElementById(\'hours_open_field\').value,\
-    projections[0]); return false;');
   paragraph.appendChild(button);
-  add_store_form.appendChild(paragraph);
+  add_store_fieldset.appendChild(paragraph);
+
+  // complete the form
+  add_store_form.appendChild(add_store_fieldset);
+  add_store_form.addEventListener('submit', add_store);
 
   // append form to div
   var add_store_div = document.createElement('div');
@@ -199,4 +249,6 @@ function render_add_store_form() {
   add_store_div.appendChild(add_store_form);
   // append div to output_div
   output_div.appendChild(add_store_div);
+
+  // document.getElementById('create_store_button')
 }
