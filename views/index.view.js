@@ -4,7 +4,6 @@ function display_weekly_total(weekly_total) {
 
 function scroll_billboard() {
   var scroller = document.getElementById('scroll');
-  console.log('Scroller: ' + scroller.innerText );
 
   function shiftStringLeft(str) {
     return str.substr(1, str.length) + str.charAt(0);
