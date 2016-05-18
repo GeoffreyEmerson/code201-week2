@@ -26,10 +26,11 @@ function display_tables(store_array) {
     // now build tbody
     var tbody = document.createElement('tbody');
     for (var j = 0; j < current_store.estimates.length; j++) {
+      // Iterate over each hour and make that data into a table row
       var table_row = document.createElement('tr');
       var cells = [current_store.estimates[j].time,
-                   current_store.estimates[j].pizzas,
-                   current_store.estimates[j].deliveries,
+                   current_store.estimates[j].pizzas + ' (' + current_store.daily_projections[Math.floor(j / 3)][0] + ',' + current_store.daily_projections[Math.floor(j / 3)][1] + ')',
+                   current_store.estimates[j].deliveries + ' (' + current_store.daily_projections[Math.floor(j / 3)][2] + ',' + current_store.daily_projections[Math.floor(j / 3)][3] + ')',
                    current_store.estimates[j].drivers];
       for (var k = 0; k < cells.length; k++) {
         var th_col = document.createElement('td');
