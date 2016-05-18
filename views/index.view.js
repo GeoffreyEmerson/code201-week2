@@ -1,5 +1,5 @@
-function display_weekly_total(weekly_total, output_span) {
-  output_span.innerText = weekly_total;
+function display_weekly_total(weekly_total) {
+  document.getElementById('weekly_pizzas').innerText = weekly_total;
 }
 
 function scroll_billboard() {

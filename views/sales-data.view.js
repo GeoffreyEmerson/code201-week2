@@ -1,5 +1,7 @@
+var output_div = document.getElementById('stores_div');
+
 // Build tables
-function display_tables(store_array, output_div) {
+function display_tables(store_array) {
   for (var i = 0; i < store_array.length; i++) {
     var current_store = store_array[i];
 
@@ -65,7 +67,7 @@ function display_tables(store_array, output_div) {
   }
 }
 
-function display_hourly_totals(hourly_totals, output_div) {
+function display_hourly_totals(hourly_totals) {
   // build h2 for totals heading
   var store_header = document.createElement('h3');
   store_header.appendChild(document.createTextNode('Totals by Hour'));

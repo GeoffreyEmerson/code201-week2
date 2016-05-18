@@ -1,3 +1,6 @@
+// The main data array
+var stores = [];
+
 // Store constructor
 var Store = function(name_input, open_time, hours_per_day, daily_projections) {
   this.name = name_input;
