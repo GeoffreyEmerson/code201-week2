@@ -211,7 +211,6 @@ function render_add_store_form() {
   var projections_tbody = document.createElement('tbody');
   var projections_td;
   var projections_input;
-  console.log(projections[0]);
   for (var row = 0; row < projections[0].length; row++) {
     projections_tr = document.createElement('tr');
     projections_td = document.createElement('td');
