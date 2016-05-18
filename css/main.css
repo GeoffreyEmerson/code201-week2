@@ -139,3 +139,28 @@ footer {
 #projections_table td input{
   width: 40px;
 }
+
+label {
+  float: left;
+  width: 150px;
+  text-align: right;
+}
+
+input {
+  margin-left: 10px;
+  text-align: center;
+}
+
+#store_name_field {
+  text-align: left;
+}
+
+#opening_time_field, #hours_open_field{
+  width: 50px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

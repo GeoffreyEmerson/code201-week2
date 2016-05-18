@@ -153,7 +153,8 @@ function render_add_store_form() {
   input.setAttribute('name', 'store_name_field');
   input.setAttribute('id', 'store_name_field');
   input.setAttribute('autocomplete', 'off');
-  input.setAttribute('value', 'testLocation');
+  input.setAttribute('placeholder', 'Location or Name');
+  input.setAttribute('required', 'required');
   paragraph.appendChild(label);
   paragraph.appendChild(input);
   add_store_fieldset.appendChild(paragraph);
@@ -164,6 +165,7 @@ function render_add_store_form() {
   label.setAttribute('for', 'opening_time_field');
   label.appendChild(document.createTextNode('Opening time: '));
   input = document.createElement('input');
+  input.setAttribute('type', 'number');
   input.setAttribute('name', 'opening_time_field');
   input.setAttribute('id', 'opening_time_field');
   input.setAttribute('autocomplete', 'off');
@@ -177,6 +179,7 @@ function render_add_store_form() {
   label.setAttribute('for', 'hours_open_field');
   label.appendChild(document.createTextNode('Hours open: '));
   input = document.createElement('input');
+  input.setAttribute('type', 'number');
   input.setAttribute('name', 'hours_open_field');
   input.setAttribute('id', 'hours_open_field');
   input.setAttribute('autocomplete', 'off');
@@ -219,6 +222,7 @@ function render_add_store_form() {
     for (var col = 0; col < projections[0][row].length; col++) {
       projections_td = document.createElement('td');
       projections_input = document.createElement('input');
+      projections_input.setAttribute('type', 'number');
       projections_input.setAttribute('name', 'input_' + row + '_' + col);
       projections_input.setAttribute('autocomplete', 'off');
       projections_input.setAttribute('value', projections[0][row][col]);
