@@ -165,10 +165,12 @@ function render_add_store_form() {
   label.setAttribute('for', 'opening_time_field');
   label.appendChild(document.createTextNode('Opening time: '));
   input = document.createElement('input');
-  input.setAttribute('type', 'number');
+  input.setAttribute('type', 'number'); // change to select box with actual hours
   input.setAttribute('name', 'opening_time_field');
   input.setAttribute('id', 'opening_time_field');
   input.setAttribute('autocomplete', 'off');
+  input.setAttribute('min', '0');
+  input.setAttribute('max', '23');
   input.setAttribute('value', '8');
   paragraph.appendChild(label);
   paragraph.appendChild(input);
@@ -183,6 +185,8 @@ function render_add_store_form() {
   input.setAttribute('name', 'hours_open_field');
   input.setAttribute('id', 'hours_open_field');
   input.setAttribute('autocomplete', 'off');
+  input.setAttribute('min', '1');
+  input.setAttribute('max', '24');
   input.setAttribute('value', '18');
   paragraph.appendChild(label);
   paragraph.appendChild(input);
@@ -225,6 +229,8 @@ function render_add_store_form() {
       projections_input.setAttribute('type', 'number');
       projections_input.setAttribute('name', 'input_' + row + '_' + col);
       projections_input.setAttribute('autocomplete', 'off');
+      projections_input.setAttribute('min', '0');
+      projections_input.setAttribute('max', '999');
       projections_input.setAttribute('value', projections[0][row][col]);
       projections_td.appendChild(projections_input);
       projections_tr.appendChild(projections_td);
