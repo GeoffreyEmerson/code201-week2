@@ -27,8 +27,25 @@ calculate_totals();
 display_hourly_totals(hourly_totals);
 render_add_store_form();
 
-function add_store(store_name, opening, hours_open, projections) {
-  stores.push(new Store(store_name, opening, hours_open, projections));
+function pull_projections_from_event(event) {
+  var result_array = [];
+  var t = event.target;
+  for( var i = 0; i < 24; i += 4) {
+    var num1 = Number(t[i + 4].value);
+    var num2 = Number(t[i + 5].value);
+    var num3 = Number(t[i + 6].value);
+    var num4 = Number(t[i + 7].value);
+    result_array.push([num1,num2,num3,num4]);
+  }
+  return result_array;
+}
+
+function add_store(event) { //store_name, opening, hours_open, projections
+  event.preventDefault();
+  stores.push(new Store(event.target[1].value,
+                        event.target[2].value,
+                        event.target[3].value,
+                        pull_projections_from_event(event)));
   calculate_totals();
   display_tables(stores);
   display_hourly_totals(hourly_totals);
