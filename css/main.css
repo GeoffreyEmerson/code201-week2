@@ -38,10 +38,6 @@ h1 {
   margin: 30px auto;
 }
 
-h1.map-header{
-  font-size: 90px;
-}
-
 body {
   background-color: #000;
   background-attachment: fixed;
@@ -122,7 +118,6 @@ ul {
   padding: 15px;
   margin: 25px;
   width: 550px;
-  border-radius: 5px;
 }
 
 footer {
@@ -168,24 +163,4 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-#new_store_button {
-  position: fixed;
-  text-align: right;
-  right: 0;
-  top: 0;
-  background-color: #333;
-  padding: 10px;
-}
-
-#map {
-  width: 800px;
-  height: 500px;
-  margin: auto;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
