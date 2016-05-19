@@ -27,6 +27,9 @@ var Store = function(name_input, open_time, hours_per_day, daily_projections) {
   this.generate_random_pizzas = function(hour) {
     // Possible pizzas made per hour depends on the range of the hour chosen
     var range_set = Math.floor(hour / 3); // Chooses one of the six arrays in daily_projections
+    if (typeof(daily_projections[range_set]) === 'undefined') {
+      daily_projections.push([0,0,0,0]);
+    }
     var range_this_hour = daily_projections[range_set][1] - daily_projections[range_set][0];
     var pizzas_over_min = Math.floor(Math.random() * range_this_hour);
     var pizzas_this_hour = daily_projections[range_set][0] + pizzas_over_min;
