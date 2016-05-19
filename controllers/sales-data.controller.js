@@ -42,9 +42,10 @@ function pull_projections_from_event(event) {
 
 function add_store(event) { //store_name, opening, hours_open, projections
   event.preventDefault();
+  console.info(event);
   stores.push(new Store(event.target[1].value,
-                        event.target[2].value,
-                        event.target[3].value,
+                        parseInt(event.target[2].value),
+                        parseInt(event.target[3].value),
                         pull_projections_from_event(event)));
   calculate_totals();
   display_tables(stores);

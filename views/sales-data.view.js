@@ -164,39 +164,50 @@ function render_add_store_form() {
   label = document.createElement('label');
   label.setAttribute('for', 'opening_time_field');
   label.appendChild(document.createTextNode('Opening time: '));
-  input = document.createElement('input');
-  input.setAttribute('type', 'number'); // change to select box with actual hours
-  input.setAttribute('name', 'opening_time_field');
-  input.setAttribute('id', 'opening_time_field');
-  input.setAttribute('autocomplete', 'off');
-  input.setAttribute('min', '0');
-  input.setAttribute('max', '23');
-  input.setAttribute('value', '8');
+
+  // create the spinner for opening hour, which can be from midnight to 11pm
+  select = document.createElement('select');
+  select.setAttribute('name', 'opening_time_field');
+  select.setAttribute('id', 'opening_time_field');
+  var option;
+  for (var hour = 0; hour < 24; hour ++) {
+    var time = new Date();
+    time.setHours(hour);
+    option = document.createElement('option');
+    option.setAttribute('value', hour);
+    if (hour == 8) {
+      option.setAttribute('selected', 'selected');
+    }
+    select.appendChild(option);
+    option.appendChild(document.createTextNode(format_time(time)));
+  }
   paragraph.appendChild(label);
-  paragraph.appendChild(input);
+  paragraph.appendChild(select);
   add_store_fieldset.appendChild(paragraph);
 
   paragraph = document.createElement('p');
   label = document.createElement('label');
   label.setAttribute('for', 'hours_open_field');
-  label.appendChild(document.createTextNode('Hours open: '));
-  input = document.createElement('input');
-  input.setAttribute('type', 'number');
-  input.setAttribute('name', 'hours_open_field');
-  input.setAttribute('id', 'hours_open_field');
-  input.setAttribute('autocomplete', 'off');
-  input.setAttribute('min', '1');
-  input.setAttribute('max', '24');
-  input.setAttribute('value', '18');
+  label.appendChild(document.createTextNode('Hours open per day: '));
+  select = document.createElement('select');
+  select.setAttribute('name', 'hours_open_field');
+  select.setAttribute('id', 'hours_open_field');
+  var option;
+  for (var hour = 1; hour <= 24; hour ++) {
+    option = document.createElement('option');
+    option.setAttribute('value', hour);
+    if (hour == 18) {
+      option.setAttribute('selected', 'selected');
+    }
+    select.appendChild(option);
+    option.appendChild(document.createTextNode(hour));
+  }
   paragraph.appendChild(label);
-  paragraph.appendChild(input);
+  paragraph.appendChild(select);
   add_store_fieldset.appendChild(paragraph);
+  // select.addEventListener('change', render_projections_table);
 
-  // Add projections fields and defaults to form
-
-  // create element table
-  // create element row
-  // iterate through first row of hillsboro defaults
+  // create table for new store projected sales
   var projections_table = document.createElement('table');
   projections_table.setAttribute('id', 'projections_table');
   //thead

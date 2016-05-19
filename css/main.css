@@ -152,16 +152,22 @@ label {
 }
 
 input {
-  margin-left: 10px;
   text-align: center;
 }
 
 #store_name_field {
   text-align: left;
+    margin-left: 10px;
 }
 
-#opening_time_field, #hours_open_field{
+#hours_open_field{
   width: 50px;
+    margin-left: 10px;
+}
+
+#opening_time_field {
+  width: 80px;
+    margin-left: 10px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
