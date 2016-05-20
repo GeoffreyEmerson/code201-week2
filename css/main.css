@@ -56,15 +56,15 @@ body {
   font-size: 18px;
   text-shadow: 0 0 3px #FF0000;
   margin: 0;
-  cursor: url('/img/cursor.png') 8 8, auto;
+  cursor: url('../img/cursor.png') 8 8, auto;
 }
 
 body.main {
-  background-image: url('/img/pizza.png');
+  background-image: url('../img/pizza.png');
 }
 
 body.data {
-  background-image: url('/img/futuristic-city-wallpaper-7.jpg');
+  background-image: url('../img/futuristic-city-wallpaper-7.jpg');
 }
 
 h2 {
@@ -75,7 +75,7 @@ h2 {
 
 h2.groovy {
   border-width: 30px;
-  border-image: url("/img/groovy.png") 50 50 repeat;
+  border-image: url("../img/groovy.png") 50 50 repeat;
   border-style: solid;
   text-align: center;
   background-color: #444;
