@@ -34,7 +34,7 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: {lat: 45.5179732, lng: -122.649625},
     map: map,
-    icon: '.img/pizza-icon.png'
+    icon: './img/pizza-icon.png'
   });
 
   // PDX marker
