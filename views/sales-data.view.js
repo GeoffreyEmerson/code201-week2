@@ -142,12 +142,41 @@ function display_weekly_totals(stores) {
   var store_header = document.createElement('h3');
   store_header.appendChild(document.createTextNode('Weekly Totals by Store'));
 
-  console.log(stores);
-
-  // output resulting div
   var store_div = document.createElement('div');
   store_div.setAttribute('class', 'totals');
   store_div.appendChild(store_header);
+  var total_of_totals = 0;
+  // var h4_header;
+
+  var table = document.createElement('table');
+  var tr, td;
+  for (var i = 0; i < stores.length; i++) {
+    total_of_totals += stores[i].weekly_total_sales;
+
+    tr = document.createElement('tr');
+    td = document.createElement('td');
+    td.appendChild(document.createTextNode(stores[i].name));
+    tr.appendChild(td);
+    td = document.createElement('td');
+    td.appendChild(document.createTextNode(stores[i].weekly_total_sales));
+    tr.appendChild(td);
+    table.appendChild(tr);
+  }
+
+  tr = document.createElement('tr');
+  td = document.createElement('td');
+  td.appendChild(document.createTextNode('Grand Total'));
+  tr.appendChild(td);
+  td = document.createElement('td');
+  td.appendChild(document.createTextNode(total_of_totals));
+  tr.appendChild(td);
+  table.appendChild(tr);
+  table.setAttribute('class', 'grande');
+
+  store_div.appendChild(table);
+  store_div.setAttribute('class','totals');
+
+  // output resulting div
   output_div.appendChild(store_div);
 }
 

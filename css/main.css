@@ -8,6 +8,11 @@ table {
   background-color: #555;
 }
 
+table.grande td {
+  font-size: 2em;
+  padding: 10px;
+}
+
 th {
   background-color: #000;
 }
@@ -124,6 +129,11 @@ ul {
   margin: 25px;
   width: 550px;
   border-radius: 5px;
+  border: 2px solid #999;
+}
+
+.totals {
+  border: 2px solid red;
 }
 
 footer {
