@@ -66,6 +66,7 @@ function display_tables(store_array) {
     // output the table and store name within a div per store
     var store_div = document.createElement('div');
     store_div.setAttribute('class', 'individual_store');
+    store_div.setAttribute('id', current_store.name + '_div');
     store_div.appendChild(store_header);
     store_div.appendChild(table);
     output_div.appendChild(store_div);

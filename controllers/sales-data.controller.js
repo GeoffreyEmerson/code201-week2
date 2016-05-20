@@ -49,4 +49,5 @@ function add_store(event) { //store_name, opening, hours_open, projections
   display_weekly_totals(stores);
   render_add_store_form();
   set_up_modal();
+  document.getElementById(event.target[1].value + '_div').scrollIntoView();
 }
