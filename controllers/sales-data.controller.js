@@ -1,8 +1,3 @@
-// Initialize store object array
-for (var i = 0; i < store_names.length; i++) {
-  stores.push(new Store(store_names[i], opening, hours_open, projections[i]));
-}
-
 // put together the hour by hour totals for all locations for a single day
 var hourly_totals = calculate_hourly_totals(stores);
 
