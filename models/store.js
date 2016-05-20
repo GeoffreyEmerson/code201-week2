@@ -1,18 +1,15 @@
 // The main data array
 var stores = [];
 
+// Initialize store object array; data comes from defaults.js
+for (var i = 0; i < store_names.length; i++) {
+  stores.push(new Store(store_names[i], opening, hours_open, projections[i]));
+}
+
 // Store constructor
-var Store = function(name_input, open_time, hours_per_day, daily_projections) {
+function Store(name_input, open_time, hours_per_day, daily_projections) {
   this.name = name_input;
   this.daily_projections = daily_projections;
-
-  // Format for estimate literals:
-  // {
-  //   time: format_time(date),
-  //   pizzas: pizzas_this_hour,
-  //   deliveries: deliveries_this_hour,
-  //   drivers: recommended_drivers
-  // };
 
   this.estimates; //array that contains estimate literals for every hour in each store object
   this.daily_total_pizzas = 0;
