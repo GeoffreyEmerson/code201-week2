@@ -190,6 +190,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 800px;
   height: 500px;
   margin: auto;
+  border: 2px solid red;
 }
 
 a {
@@ -200,5 +201,9 @@ a {
 .back-button {
   font-size: 30px;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px auto;
+  border: 1px solid red;
+  background-color: #333;
+  width: 20%;
+  padding: 5px;
 }

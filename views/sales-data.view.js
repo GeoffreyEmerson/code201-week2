@@ -73,7 +73,7 @@ function display_tables(store_array) {
 }
 
 function display_hourly_totals(hourly_totals) {
-  // build h2 for totals heading
+  // build h3 for totals heading
   var store_header = document.createElement('h3');
   store_header.appendChild(document.createTextNode('Totals by Hour'));
 
@@ -134,6 +134,20 @@ function display_hourly_totals(hourly_totals) {
   store_div.setAttribute('class', 'totals');
   store_div.appendChild(store_header);
   store_div.appendChild(table);
+  output_div.appendChild(store_div);
+}
+
+function display_weekly_totals(stores) {
+  // build h3 for section heading
+  var store_header = document.createElement('h3');
+  store_header.appendChild(document.createTextNode('Weekly Totals by Store'));
+
+  console.log(stores);
+
+  // output resulting div
+  var store_div = document.createElement('div');
+  store_div.setAttribute('class', 'totals');
+  store_div.appendChild(store_header);
   output_div.appendChild(store_div);
 }
 
