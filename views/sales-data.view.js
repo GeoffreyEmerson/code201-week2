@@ -248,7 +248,7 @@ function render_add_store_form() {
   paragraph.appendChild(label);
   paragraph.appendChild(select);
   add_store_fieldset.appendChild(paragraph);
-  // select.addEventListener('change', render_projections_table);
+  // TODO: select.addEventListener('change', render_projections_table);
 
   // create table for new store projected sales
   var projections_table = document.createElement('table');
@@ -272,12 +272,20 @@ function render_add_store_form() {
   var projections_tbody = document.createElement('tbody');
   var projections_td;
   var projections_input;
-  for (var row = 0; row < projections[0].length; row++) {
+  // visible rows will be projections[0].length
+  for (var row = 0; row < 8; row++) {
     projections_tr = document.createElement('tr');
     projections_td = document.createElement('td');
-    projections_td.appendChild(document.createTextNode('Shift ' + row));
+    projections_td.appendChild(document.createTextNode('Shift ' + (row + 1)));
     projections_tr.appendChild(projections_td);
-    for (var col = 0; col < projections[0][row].length; col++) {
+    projections_tr.setAttribute('id','projection_row_' + row);
+    var temp_projections;
+    if (row >= projections[0].length) {
+      temp_projections = [0,0,0,0];
+    } else {
+      temp_projections = projections[0][row];
+    }
+    for (var col = 0; col < temp_projections.length; col++) {
       projections_td = document.createElement('td');
       projections_input = document.createElement('input');
       projections_input.setAttribute('type', 'number');
@@ -285,7 +293,7 @@ function render_add_store_form() {
       projections_input.setAttribute('autocomplete', 'off');
       projections_input.setAttribute('min', '0');
       projections_input.setAttribute('max', '999');
-      projections_input.setAttribute('value', projections[0][row][col]);
+      projections_input.setAttribute('value', temp_projections[col]);
       projections_td.appendChild(projections_input);
       projections_tr.appendChild(projections_td);
     }
@@ -297,6 +305,7 @@ function render_add_store_form() {
   // create the button
   paragraph = document.createElement('p');
   var button = document.createElement('button');
+  button.setAttribute('class','add_button');
   button.appendChild(document.createTextNode('Create Store'));
   paragraph.appendChild(button);
   add_store_fieldset.appendChild(paragraph);
@@ -307,11 +316,48 @@ function render_add_store_form() {
 
   // append form to div
   var add_store_div = document.createElement('div');
-  add_store_div.setAttribute('class', 'add_store_div');
+  add_store_div.setAttribute('class', 'add_store_div modal-content');
   add_store_div.appendChild(add_store_heading);
   add_store_div.appendChild(add_store_form);
+
+  // modal div
+  var modal_div = document.createElement('div');
+  modal_div.setAttribute('class', 'modal');
+  modal_div.setAttribute('id', 'add_store_modal');
+  modal_div.appendChild(add_store_div);
+
   // append div to output_div
-  output_div.appendChild(add_store_div);
+  output_div.appendChild(modal_div);
 
   // document.getElementById('create_store_button')
+}
+
+function set_up_modal() {
+  // Get the modal
+  var modal = document.getElementById('add_store_modal');
+
+  // Get the button that opens the modal
+  var btn = document.getElementById('new_store_button');
+  btn.style.display = 'block';
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName('close')[0];
+
+  // When the user clicks the button, open the modal
+  btn.addEventListener('click', display_modal, false);
+
+  function display_modal() {
+    modal.style.display = 'block';
+    btn.style.display = 'none';
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.addEventListener('click', hide_modal, false);
+
+  function hide_modal(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+      btn.style.display = 'block';
+    }
+  };
 }

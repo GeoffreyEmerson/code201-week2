@@ -27,6 +27,7 @@ display_tables(stores);
 display_hourly_totals(hourly_totals);
 display_weekly_totals(stores);
 render_add_store_form();
+set_up_modal();
 
 function pull_projections_from_event(event) {
   var result_array = [];
@@ -52,5 +53,5 @@ function add_store(event) { //store_name, opening, hours_open, projections
   display_hourly_totals(hourly_totals);
   display_weekly_totals(stores);
   render_add_store_form();
-
+  set_up_modal();
 }

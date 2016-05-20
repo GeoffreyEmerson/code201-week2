@@ -132,6 +132,10 @@ ul {
   border: 2px solid #999;
 }
 
+.add_store_div {
+  width: 50%;
+}
+
 .totals {
   border: 2px solid red;
 }
@@ -194,6 +198,7 @@ input[type=number]::-webkit-outer-spin-button {
   top: 0;
   background-color: #333;
   padding: 10px;
+  z-index: 1;
 }
 
 #map {
@@ -215,5 +220,10 @@ a {
   border: 1px solid red;
   background-color: #333;
   width: 20%;
+  padding: 5px;
+}
+
+.add_button {
+  font-size: 14px;
   padding: 5px;
 }
