@@ -49,5 +49,27 @@ function add_store(event) { //store_name, opening, hours_open, projections
   display_weekly_totals(stores);
   render_add_store_form();
   set_up_modal();
-  document.getElementById(event.target[1].value + '_div').scrollIntoView();
+  smooth_scroll_to(document.getElementById(event.target[1].value + '_div'));
+}
+
+// Custom smoothed auto-scrolling
+function smooth_scroll_to(element) {
+  if (element) {
+    console.log(element.offsetTop);
+    next_scroll(element.offsetTop);
+  }
+}
+
+function next_scroll(destination) {
+  var next_jump = window.scrollY + Math.ceil((destination - window.scrollY) / 8 );
+  if ( Math.abs(window.scrollY - next_jump) > 2 ) {
+    window.setTimeout(render_scroll, 50, next_jump, destination);
+  } else {
+    console.log('Smooth Scroll complete.');
+  }
+}
+
+function render_scroll(next_jump,destination) {
+  window.scrollTo(0, next_jump);
+  next_scroll(destination);
 }

@@ -329,8 +329,6 @@ function render_add_store_form() {
 
   // append div to output_div
   output_div.appendChild(modal_div);
-
-  // document.getElementById('create_store_button')
 }
 
 function set_up_modal() {
@@ -350,6 +348,7 @@ function set_up_modal() {
   function display_modal() {
     modal.style.display = 'block';
     btn.style.display = 'none';
+    document.getElementById('store_name_field').focus();
   };
 
   // When the user clicks anywhere outside of the modal, close it
