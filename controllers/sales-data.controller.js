@@ -53,16 +53,16 @@ function add_store(event) { //store_name, opening, hours_open, projections
 }
 
 // Custom smoothed auto-scrolling
-function smooth_scroll_to(element) {
+function smooth_scroll_to(element, last_jump) {
   if (element) {
     var next_jump = window.scrollY + Math.ceil((element.offsetTop - window.scrollY) / 8 );
-    if ( Math.abs(window.scrollY - next_jump) > 0 ) {
+    if ( next_jump != last_jump) {
       window.setTimeout(render_scroll, 50, next_jump, element);
     }
   }
 }
 
-function render_scroll(next_jump,element) {
-  window.scrollTo(0, next_jump);
-  smooth_scroll_to(element);
+function render_scroll(jump_location, element) {
+  window.scrollTo(0, jump_location);
+  smooth_scroll_to(element, jump_location);
 }
