@@ -66,6 +66,7 @@ function display_tables(store_array) {
     // output the table and store name within a div per store
     var store_div = document.createElement('div');
     store_div.setAttribute('class', 'individual_store');
+    store_div.setAttribute('id', current_store.name + '_div');
     store_div.appendChild(store_header);
     store_div.appendChild(table);
     output_div.appendChild(store_div);
@@ -328,8 +329,6 @@ function render_add_store_form() {
 
   // append div to output_div
   output_div.appendChild(modal_div);
-
-  // document.getElementById('create_store_button')
 }
 
 function set_up_modal() {
@@ -349,6 +348,7 @@ function set_up_modal() {
   function display_modal() {
     modal.style.display = 'block';
     btn.style.display = 'none';
+    document.getElementById('store_name_field').focus();
   };
 
   // When the user clicks anywhere outside of the modal, close it
