@@ -58,8 +58,6 @@ function smooth_scroll_to(element) {
     var next_jump = window.scrollY + Math.ceil((element.offsetTop - window.scrollY) / 8 );
     if ( Math.abs(window.scrollY - next_jump) > 0 ) {
       window.setTimeout(render_scroll, 50, next_jump, element);
-    } else {
-      console.log('scroll done.');
     }
   }
 }
