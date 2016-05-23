@@ -246,6 +246,7 @@ function render_add_store_form() {
     select.appendChild(option);
     option.appendChild(document.createTextNode(hour));
   }
+  select.addEventListener('change', adjust_shift_visibility, false);
   paragraph.appendChild(label);
   paragraph.appendChild(select);
   add_store_fieldset.appendChild(paragraph);
@@ -360,4 +361,15 @@ function set_up_modal() {
       btn.style.display = 'block';
     }
   };
+}
+
+function adjust_shift_visibility() {
+  var hours_open = document.getElementById('hours_open_field').value;
+  var shifts_to_display = Math.ceil(hours_open / 3);
+  for (var i = 0; i < shifts_to_display; i++) {
+    document.getElementById('projection_row_' + i).removeAttribute('hidden');
+  }
+  for (var i = shifts_to_display; i < 8; i++) {
+    document.getElementById('projection_row_' + i).setAttribute('hidden','hidden');
+  }
 }
